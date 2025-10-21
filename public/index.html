@@ -22,105 +22,47 @@
     <div class="card border-0 shadow rounded-4 w-100">
       <div class="card-body p-0">
         <ul class="list-group rounded-4 overflow-hidden">
-          <!-- 1 (novo primeiro item) -->
+
+          <!-- 1 -->
           <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
             <div class="d-flex align-items-center">
               <span class="badge rounded-pill text-bg-primary me-3">1</span>
-              <i class="bi bi-server me-2"></i>
-              <span class="fw-semibold">Tirar extensão de arquivo estático no Nginx.</span>
+              <i class="bi bi-person-badge me-2"></i>
+              <span class="fw-semibold">Inserção de campo <strong>role</strong> e explicação de seu significado (USER | ADMIN).</span>
             </div>
-            <span class="badge text-bg-light border">nginx</span>
+            <span class="badge text-bg-light border">backend</span>
           </li>
 
-          <!-- 2 (antes era 1) -->
+          <!-- 2 -->
           <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
             <div class="d-flex align-items-center">
               <span class="badge rounded-pill text-bg-primary me-3">2</span>
-              <i class="bi bi-cart4 me-2"></i>
-              <span class="fw-semibold">Explicar o projeto de carrinho de compras (escopo, entidades, fluxo de adicionar/remover e persistência)</span>
-            </div>
-            <span class="badge text-bg-light border">project</span>
-          </li>
-
-          <!-- 3 (antes era 2) -->
-          <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
-            <div class="d-flex align-items-center">
-              <span class="badge rounded-pill text-bg-primary me-3">3</span>
-              <i class="bi bi-lightning-charge me-2"></i>
-              <span class="fw-semibold">Em <code>./vite.config.js</code>, preparar a pré-compilação para React (plugins, aliases, otimizações)</span>
-            </div>
-            <span class="badge text-bg-light border">build</span>
-          </li>
-
-          <!-- 4 (antes era 3) -->
-          <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
-            <div class="d-flex align-items-center">
-              <span class="badge rounded-pill text-bg-primary me-3">4</span>
               <i class="bi bi-box-arrow-in-right me-2"></i>
-              <span class="fw-semibold">Preparar <code>./resources/app.ts</code> como entrypoint do React (bootstrap da aplicação e montagem do root)</span>
+              <span class="fw-semibold">Rever a inicialização do React, desde a chamada do controlador ou arquivo estático até o componente principal em <code>pages</code>.</span>
             </div>
             <span class="badge text-bg-light border">entrypoint</span>
           </li>
 
-          <!-- 5 (antes era 4) -->
+          <!-- 3 -->
           <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
             <div class="d-flex align-items-center">
-              <span class="badge rounded-pill text-bg-primary me-3">5</span>
-              <i class="bi bi-database-gear me-2"></i>
-              <span class="fw-semibold">Apresentar a nova entidade <strong>Produtos</strong> no backend (model, rotas, doc no Swagger, controlador)</span>
-            </div>
-            <div class="d-flex gap-2">
-              <span class="badge text-bg-light border">backend</span>
-              <span class="badge text-bg-light border">api</span>
-            </div>
-          </li>
-
-          <!-- 6 (antes era 5) -->
-          <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
-            <div class="d-flex align-items-center">
-              <span class="badge rounded-pill text-bg-primary me-3">6</span>
-              <i class="bi bi-filetype-jsx me-2"></i>
-              <span class="fw-semibold">Apresentar extensões <code>.jsx</code> e <code>.tsx</code> (JSX vs TSX, tipagem e benefícios)</span>
+              <span class="badge rounded-pill text-bg-primary me-3">3</span>
+              <i class="bi bi-diagram-3 me-2"></i>
+              <span class="fw-semibold">Mostrar a árvore de componentes de <strong>Produtos</strong> e correção do <code>tsconfig</code> / tipagem (<code>tf</code>).</span>
             </div>
             <span class="badge text-bg-light border">react</span>
           </li>
 
-          <!-- 7 (antes era 6) -->
+          <!-- 4 -->
           <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
             <div class="d-flex align-items-center">
-              <span class="badge rounded-pill text-bg-primary me-3">7</span>
-              <i class="bi bi-diagram-3 me-2"></i>
-              <span class="fw-semibold">Lógica de organização do React: pastas de componentes, tipos (<code>DTOs</code>) e services (camada de acesso a dados)</span>
-            </div>
-            <span class="badge text-bg-light border">architecture</span>
-          </li>
-
-          <!-- 8 (antes era 7) -->
-          <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
-            <div class="d-flex align-items-center">
-              <span class="badge rounded-pill text-bg-primary me-3">8</span>
+              <span class="badge rounded-pill text-bg-primary me-3">4</span>
               <i class="bi bi-sliders me-2"></i>
-              <span class="fw-semibold">Lógica de parâmetros (props, children, parâmetros de rota e query string)</span>
+              <span class="fw-semibold">Mostrar o alias <code>@app</code> em <code>./vite.config.js</code> e <code>tsconfig.json</code>.</span>
             </div>
-            <div class="d-flex gap-2">
-              <span class="badge text-bg-light border">params</span>
-              <span class="badge text-bg-light border">routing</span>
-            </div>
+            <span class="badge text-bg-light border">config</span>
           </li>
 
-          <!-- 9 (antes era 8) -->
-          <li class="list-group-item d-flex align-items-center justify-content-between py-3 list-group-item-action">
-            <div class="d-flex align-items-center">
-              <span class="badge rounded-pill text-bg-primary me-3">9</span>
-              <i class="bi bi-bezier2 me-2"></i>
-              <span class="fw-semibold">
-                Lógica de hooks (conceito, ciclo de vida,
-                 <code>useState</code>, <code>useEffect</code> e boas práticas)
-                 <a href="./examples">Exemplo</a>
-                </span>
-            </div>
-            <span class="badge text-bg-light border">hooks</span>
-          </li>
         </ul>
       </div>
     </div>
