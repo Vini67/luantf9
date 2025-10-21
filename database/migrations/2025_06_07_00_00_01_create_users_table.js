@@ -14,6 +14,8 @@ async function up() {
     );
 
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.users TO aluno;
+
+    GRANT USAGE, SELECT, UPDATE ON SEQUENCE users_id_seq TO aluno;
   `);
 }
 

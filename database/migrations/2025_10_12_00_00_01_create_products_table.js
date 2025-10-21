@@ -11,6 +11,8 @@ async function up() {
     );
 
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.products TO aluno;
+
+    GRANT USAGE, SELECT, UPDATE ON SEQUENCE products_id_seq TO aluno;
   `);
 }
 

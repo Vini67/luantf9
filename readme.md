@@ -51,7 +51,7 @@
 4. Abrir o arquivo `.env` recém criado e preencher os campos abaixo:
 
    ```env
-   POSTGRES_PASSWORD=minha_senha
+   POSTGRES_PASSWORD=123456
    JWT_SECRET=segredo
    ```
 
