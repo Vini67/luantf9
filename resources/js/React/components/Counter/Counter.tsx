@@ -8,16 +8,22 @@ export default function Counter() {
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        inputRef.current?.focus();
-    });
+        inputRef.current?.select();
+    }, []);
 
     const addClickHandler = () => {
+        setTimeout(() => {
+            inputRef.current?.select();
+        }, 0);
         setQuantity((prev) => {
             return ++prev;
         })
     }
 
     const subClickHandler = () => {
+        setTimeout(() => {
+            inputRef.current?.select();
+        }, 0);
         setQuantity((prev) => {
             if (prev === 0) {
                 return prev

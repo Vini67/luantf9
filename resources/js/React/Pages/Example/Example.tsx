@@ -56,6 +56,8 @@ export default function Example() {
             </div>
         );
 
+    console.log(PageContent);
+
 
     return (
         <div className="row g-4">
