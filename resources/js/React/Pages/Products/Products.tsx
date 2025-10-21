@@ -16,7 +16,7 @@ export default function Products() {
     }, []);
 
     const listApi = async () => {
-        const resp = await productListApi();
+        const resp = await productListApi(10);
         if ("error" in resp) return setProductList("error");
         setProductList(resp.rows);
     };
@@ -31,8 +31,8 @@ export default function Products() {
 
     return (
         <div className="row g-4">
-            <ProductCreateForm />
-            <ProductList products={productList} />
+            <ProductCreateForm onCreate={createProductHandler} />
+            <ProductList products={productList} onDelete={deleteProductHandler} />
         </div>
     );
 }
