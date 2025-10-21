@@ -48,7 +48,7 @@ export default function ProductCreateForm({ onCreate }: ProductCreateFormProps) 
                             <label htmlFor="prodName" className="form-label">Nome</label>
                             <input
                                 id="prodName"
-                                className="form-control"
+                                className="form-control w-100"
                                 placeholder="Ex.: Teclado Mecânico"
                                 value={name}
                                 onChange={changeNameHandler}

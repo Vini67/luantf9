@@ -3,8 +3,8 @@ import loginApi from "@app/js/services/api/loginApi";
 import productListApi from "@app/js/services/api/productListApi";
 import ProductList from "@app/js/React/components/ProductList/ProductList";
 import Counter from "@app/js/React/components/Counter/Counter";
-import ProductCreateForm from "../../components/ProductCreateForm/ProductCreateForm";
 import { ProductModel } from "@app/js/app.types";
+import ProductCreateForm from "@app/js/React/components/ProductCreateForm/ProductCreateForm";
 
 export default function Example() {
 
@@ -17,19 +17,12 @@ export default function Example() {
             return;
         }
 
-        (async () => {
-            const data = await loginApi("user1@unifaat.com", "123456");
+        listApi();
 
-            if ("error" in data) {
-                return;
-            }
-
-            listApi();
-        })();
     }, [page]);
 
     const listApi = async () => {
-        const resp = await productListApi();
+        const resp = await productListApi(10);
         if ("error" in resp) return setProductList("error");
         setProductList(resp.rows);
     };
@@ -62,16 +55,23 @@ export default function Example() {
     return (
         <div className="row g-4">
             <ul className="nav nav-tabs mb-4 justify-content-center">
-                {["Counter", "List Products"].map((item) => (
-                    <li key={item} className="nav-item">
-                        <button
-                            className={`nav-link ${page === item ? "active" : ""}`}
-                            onClick={() => setPage(item as typeof page)}
-                        >
-                            {item}
-                        </button>
-                    </li>
-                ))}
+                {["Counter", "List Products"].map((item) => {
+                    const classList = ["nav-link"];
+
+                    if (page === item) {
+                        classList.push("active");
+                    }
+                    return (
+                        <li key={item} className="nav-item">
+                            <button
+                                className={classList.join(" ")}
+                                onClick={() => setPage(item as typeof page)}
+                            >
+                                {item}
+                            </button>
+                        </li>
+                    );
+                })}
             </ul>
             {PageContent}
         </div>
