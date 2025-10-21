@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<%
-  if (typeof header === "undefined") { 
-     header = "Padrão"
-  }
-%>
-
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-    <%= header %>
+    Aula 09 - React: Estados, Efeitos e Referências
   </title>
 
   <link rel="stylesheet" href="./build/app.css" />
@@ -20,7 +14,7 @@
 </head>
 
 <body class="bg-white text-dark">
-  <%- include('../partials/header', { header: header }) %>
+  <%- include('../partials/header') %>
 
   <%- body %>
 

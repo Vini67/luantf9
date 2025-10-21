@@ -8,6 +8,7 @@ import swaggerGenerate from '../Core/SwaggerCore/swaggerGenerate.js';
 import UserViewController from '../app/Http/Controllers/User/UserViewController.js';
 import JwtVerifyViewMiddleware from '../app/Http/Middlewares/JwtVerifyViewMiddleware.js';
 import ViewProductController from '../app/Http/Controllers/Product/ViewProductController.js';
+import ViewExampleController from '../app/Http/Controllers/ViewExampleController.js';
 
 export default (function () {
 
@@ -16,6 +17,8 @@ export default (function () {
     router.get('/users', JwtVerifyViewMiddleware, UserViewController);
 
     router.get('/products', JwtVerifyViewMiddleware, ViewProductController);
+
+    router.get('/examples', JwtVerifyViewMiddleware, ViewExampleController);
 
     /** Servir o public estaticamente, tanto para arquivos como para os assets de frontend */
     // NÃO SERÁ CHAMADO CASO TENHA A CAMADA DE NGINX COM ARQUIVOS ESTÁTICOS

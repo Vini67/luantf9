@@ -1,4 +1,4 @@
-# Aula 08 - Bibliotecas JS Frontend, Introdução a react <a name="unifaat-frontend-project"></a>
+# Aula 09 - React: Estados, Efeitos e Referências <a name="unifaat-frontend-project"></a>
 
 ## 📑 Sumário
 

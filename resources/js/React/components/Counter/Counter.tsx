@@ -1,15 +1,15 @@
-import { useState } from "react";
-import InputNumber from "../InputNumber/InputNumber";
-import InputText from "../InputText/InputText";
+import { useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import "./styles.css";
 
 export default function Counter() {
     const [quantity, setQuantity] = useState(0);
 
-    const inputNumberChangeHandler = (value: number) => {
-        setQuantity(value);
-    };
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    });
 
     const addClickHandler = () => {
         setQuantity((prev) => {
@@ -26,9 +26,12 @@ export default function Counter() {
         })
     }
 
-    const changeTextHandler = (value: string) => {
-        console.log(value);
-    }
+    const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const target = event.target;
+        const onlyNumber = target.value.replace(/[^\d]/g, "");
+        const value = Number(onlyNumber || "0");
+        setQuantity(value);
+    };
 
     return (
         <>
@@ -38,16 +41,19 @@ export default function Counter() {
                         <Button onClick={subClickHandler} classList="bg-danger">
                             <i className="fa-solid fa-minus"></i>
                         </Button>
-                        <InputNumber value={quantity} onChange={inputNumberChangeHandler} />
+                        <input
+                            type="text"
+                            ref={inputRef}
+                            className="form-control form-control-lg text-center"
+                            value={quantity}
+                            onChange={inputChangeHandler}
+                        />
                         <Button onClick={addClickHandler}>
                             <i className="fa-solid fa-plus"></i>
                         </Button>
                     </div>
-
                 </div>
-
             </div>
-            <InputText onChange={changeTextHandler} />
         </>
     );
 }

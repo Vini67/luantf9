@@ -4,16 +4,21 @@ import productListApi from "@app/js/services/api/productListApi";
 import ProductList from "@app/js/React/components/ProductList/ProductList";
 import Counter from "@app/js/React/components/Counter/Counter";
 import ProductCreateForm from "../../components/ProductCreateForm/ProductCreateForm";
-import productCreateApi from "@app/js/services/api/productCreateApi";
 import { ProductModel } from "@app/js/app.types";
 
 export default function Example() {
 
     const [productList, setProductList] = useState<ProductModel[] | "error">();
 
+    const [page, setPage] = useState<"Counter" | "List Products">("Counter");
+
     useEffect(() => {
+        if (page === "Counter") {
+            return;
+        }
+
         (async () => {
-            const data = await loginApi("user1@example.com", "123456");
+            const data = await loginApi("user1@unifaat.com", "123456");
 
             if ("error" in data) {
                 return;
@@ -21,7 +26,7 @@ export default function Example() {
 
             listApi();
         })();
-    }, []);
+    }, [page]);
 
     const listApi = async () => {
         const resp = await productListApi();
@@ -37,13 +42,36 @@ export default function Example() {
         listApi();
     }
 
-    return (
-        <div>
+    const PageContent: React.JSX.Element =
+        page === "Counter" ? (
+            <div className="row g-4 justify-content-center align-items-center min-vh-50">
+                <div className="col-auto d-flex justify-content-center align-items-center">
+                    <Counter />
+                </div>
+            </div>
+        ) : (
             <div className="row g-4">
                 <ProductCreateForm onCreate={createProductHandler} />
                 <ProductList products={productList} onDelete={deleteProductHandler} />
             </div>
-            <Counter />
+        );
+
+
+    return (
+        <div className="row g-4">
+            <ul className="nav nav-tabs mb-4 justify-content-center">
+                {["Counter", "List Products"].map((item) => (
+                    <li key={item} className="nav-item">
+                        <button
+                            className={`nav-link ${page === item ? "active" : ""}`}
+                            onClick={() => setPage(item as typeof page)}
+                        >
+                            {item}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+            {PageContent}
         </div>
     );
 }

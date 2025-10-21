@@ -1,11 +1,54 @@
 type: collection.insomnia.rest/5.0
-name: UniFaat - Frontend - Aula 04
+name: UniFaat - Frontend - Projeto Final
 meta:
   id: wrk_343e210e2fe5430fb8150562b958c83d
   created: 1757205528167
-  modified: 1757205528167
+  modified: 1761055910887
   description: ""
 collection:
+  - url: http://localhost:8080/login
+    name: Login
+    meta:
+      id: req_cc56aae6d1ec44e9aeeb1e3ee27d697a
+      created: 1748819186801
+      modified: 1761056884749
+      isPrivate: false
+      description: ""
+      sortKey: -1748022818810
+    method: POST
+    body:
+      mimeType: application/x-www-form-urlencoded
+      params:
+        - name: email
+          value: user1@unifaat.com
+          id: pair_d879a0f81afa41ddaa4b619f1c9e7265
+        - name: password
+          value: "123456"
+          description: ""
+          disabled: false
+          id: pair_40957dead79b46d9afa038f3b6794e68
+    parameters:
+      - name: ""
+        value: ""
+        disabled: false
+        id: pair_36b3f52f71124335a74e6ea01b7f5127
+    headers:
+      - name: Content-Type
+        value: application/x-www-form-urlencoded
+      - name: User-Agent
+        value: insomnia/11.1.0
+    scripts:
+      afterResponse: |-
+        const jsonBody = insomnia.response.json();
+        insomnia.environment.set("token", jsonBody.token);
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
   - name: Users
     meta:
       id: fld_4a630da8c879409da0d16806d96e5d3c
@@ -19,14 +62,14 @@ collection:
         meta:
           id: req_3026a05a32ae4a12acb17a840a3d5345
           created: 1748022825329
-          modified: 1757206336391
+          modified: 1757984013823
           isPrivate: false
           description: ""
           sortKey: -1748023025581
         method: GET
         parameters:
           - name: limit
-            value: "100"
+            value: "10"
             disabled: false
             id: pair_f5a7897d98e5480baad928e8072bddc5
           - name: offset
@@ -227,58 +270,20 @@ collection:
             send: true
             store: true
           rebuildPath: true
-  - name: Todos
+  - name: Products
     meta:
-      id: fld_6f9ea4c78b13466094a89f53bdadd23f
-      created: 1757207088626
-      modified: 1757207088626
+      id: fld_427ac4da107e44698fbd9c3f02f2610b
+      created: 1760466718179
+      modified: 1760466718179
       sortKey: -1748011216339.4375
       description: ""
     children:
-      - url: http://localhost:8080/api/todos
-        name: List
-        meta:
-          id: req_059209821d6a4eca846745e1e38b526d
-          created: 1757207088627
-          modified: 1757334854961
-          isPrivate: false
-          description: ""
-          sortKey: -1748023025581
-        method: GET
-        parameters:
-          - name: limit
-            value: "100"
-            disabled: false
-            id: pair_f5a7897d98e5480baad928e8072bddc5
-          - name: offset
-            value: "0"
-            disabled: false
-            id: pair_609f3717c06e4fbaa78f4d40cdbd3c56
-          - id: pair_089aa347593a4fe9a86956f0d73ad388
-            name: orderBy
-            value: id,desc
-            description: ""
-            disabled: false
-        headers:
-          - name: User-Agent
-            value: insomnia/11.1.0
-        authentication:
-          type: bearer
-          token: "{{ _.token }}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: http://localhost:8080/api/todos
+      - url: http://localhost:8080/api/products
         name: Insert
         meta:
-          id: req_92fff092704e457ca20f6b4cc99f58d0
-          created: 1757207088628
-          modified: 1757207348652
+          id: req_abdc2feb011345e9a94997bd05a7523d
+          created: 1760466718180
+          modified: 1760466797909
           isPrivate: false
           description: ""
           sortKey: -1747976565966.25
@@ -287,8 +292,8 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"title": "Lavar a louça",
-            	"id_user": 5
+            	"name": "José",
+            	"price": 100
             }
         parameters:
           - id: pair_f87b5b24717049019f8bd2d849a4bc6a
@@ -312,21 +317,78 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:8080/api/todos/1
-        name: Update
+      - url: http://localhost:8080/api/products
+        name: List
         meta:
-          id: req_73b7dd189dad4535a077ec784fcba0d4
-          created: 1757207088629
-          modified: 1757207551075
+          id: req_d127694a1ecb4076a982cf3b000a0cf8
+          created: 1760466718180
+          modified: 1760466750715
           isPrivate: false
           description: ""
-          sortKey: -1747953336158.875
+          sortKey: -1748023025581
+        method: GET
+        parameters:
+          - name: limit
+            value: "10"
+            disabled: false
+            id: pair_f5a7897d98e5480baad928e8072bddc5
+          - name: offset
+            value: "0"
+            disabled: false
+            id: pair_609f3717c06e4fbaa78f4d40cdbd3c56
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/products/16
+        name: Delete
+        meta:
+          id: req_ac3985040eff497b8ee9c91c45a6403a
+          created: 1760466718182
+          modified: 1760466925261
+          isPrivate: false
+          description: ""
+          sortKey: -1747953336058.875
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/products/1
+        name: Update
+        meta:
+          id: req_f75d403e767b4e199ae01ab30796201b
+          created: 1761055922671
+          modified: 1761056242996
+          isPrivate: false
+          description: ""
+          sortKey: -1748022999744
         method: PUT
         body:
           mimeType: application/json
           text: |-
             {
-            	"title": "Lavar a louça"
+            	"name": "teste"
             }
         parameters:
           - name: limit
@@ -353,15 +415,15 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:8080/api/todos/3
+      - url: http://localhost:8080/api/products/1
         name: Get
         meta:
-          id: req_54a92b4dd1fa4425b1b98709bdf911b8
-          created: 1757207088630
-          modified: 1757207167327
+          id: req_6059f5b7bbdf4931a6c5a6218eca40d3
+          created: 1761056469503
+          modified: 1761056474875
           isPrivate: false
           description: ""
-          sortKey: -1747999795773.625
+          sortKey: -1748023025681
         method: GET
         parameters:
           - name: limit
@@ -377,7 +439,6 @@ collection:
             value: insomnia/11.1.0
         authentication:
           type: bearer
-          prefix: ""
           token: "{{ _.token }}"
         settings:
           renderRequestBody: true
@@ -387,85 +448,38 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:8080/api/todos/7
-        name: Delete
-        meta:
-          id: req_7bf3ada8eadf4f6b860b35332cdf2aba
-          created: 1757207088631
-          modified: 1757207563170
-          isPrivate: false
-          description: ""
-          sortKey: -1747953336058.875
-        method: DELETE
-        headers:
-          - name: User-Agent
-            value: insomnia/11.1.0
-        authentication:
-          type: bearer
-          token: "{{ _.token }}"
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-  - url: http://localhost:8080/login
-    name: Login
-    meta:
-      id: req_cc56aae6d1ec44e9aeeb1e3ee27d697a
-      created: 1748819186801
-      modified: 1750990776680
-      isPrivate: false
-      description: ""
-      sortKey: -1748022818810
-    method: POST
-    body:
-      mimeType: application/x-www-form-urlencoded
-      params:
-        - name: email
-          value: user1@example.com
-          id: pair_d879a0f81afa41ddaa4b619f1c9e7265
-        - name: senha
-          value: "123456"
-          description: ""
-          disabled: false
-          id: pair_40957dead79b46d9afa038f3b6794e68
-    parameters:
-      - name: ""
-        value: ""
-        disabled: false
-        id: pair_36b3f52f71124335a74e6ea01b7f5127
-    headers:
-      - name: Content-Type
-        value: application/x-www-form-urlencoded
-      - name: User-Agent
-        value: insomnia/11.1.0
-    scripts:
-      afterResponse: |-
-        const jsonBody = insomnia.response.json();
-        insomnia.environment.set("token", jsonBody.token);
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_a552c1a652694a468837146a586a1b80
     created: 1746921355374
-    modified: 1757207430860
+    modified: 1761058506926
+  cookies:
+    - key: token
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c2VyMUB1bmlmYWF0LmNvbSIsIm5hbWUiOiJVc2VyMSIsImlhdCI6MTc2MTA1ODUwNiwiZXhwIjoxNzYxMDU5MTA2fQ.yxwUqUSM1ZJMdGY_3YMeAI3ZFbutl-Vp2Z9H6YRNl2k
+      maxAge: 600
+      domain: localhost
+      path: /
+      hostOnly: true
+      creation: 2025-10-21T14:28:06.229Z
+      lastAccessed: 2025-10-21T14:55:06.915Z
+      id: 661b1586-8fad-4680-be7f-134b0c55045e
+    - id: ef3328bf-068b-491e-ae66-3a06c56ac104
+      key: token
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c2VyMUB1bmlmYWF0LmNvbSIsIm5hbWUiOiJVc2VyMSIsImlhdCI6MTc2MTA1Njg4NiwiZXhwIjoxNzYxMDU3NDg2fQ.SzkdhjY87snkgJe329t7bP0ZepurC6myzuTLMbg3kj4
+      domain: localhost
+      path: /
+      secure: false
+      httpOnly: false
+      creation: 2025-10-21T14:28:06.229Z
+      hostOnly: true
+      lastAccessed: 2025-10-21T14:28:06.229Z
 environments:
   name: Base Environment
   meta:
     id: env_43c3f1c76ddf490ea753687cd7dfd790
     created: 1746921355373
-    modified: 1757207430862
+    modified: 1761058506928
     isPrivate: false
   data:
-    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsIm5hbWUiOiJMdWFuIiwiaWF0IjoxNzU3MjA3NDMwLCJleHAiOjE3NTcyMDgwMzB9.OYKNomIeEN0yNTg-H0116hN_LAEMk8yDFYsd02eZdZA
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c2VyMUB1bmlmYWF0LmNvbSIsIm5hbWUiOiJVc2VyMSIsImlhdCI6MTc2MTA1ODUwNiwiZXhwIjoxNzYxMDU5MTA2fQ.yxwUqUSM1ZJMdGY_3YMeAI3ZFbutl-Vp2Z9H6YRNl2k

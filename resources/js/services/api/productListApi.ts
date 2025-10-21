@@ -4,10 +4,11 @@ import catchError from "../catchError";
 
 
 
-export default async function productListApi(orderBy = "id,desc") {
+export default async function productListApi(limit = 15, orderBy = "id,desc") {
 
     const query = new URLSearchParams({
-        "orderBy": orderBy
+        "orderBy": orderBy,
+        "limit": limit.toString()
     })
 
     try {
