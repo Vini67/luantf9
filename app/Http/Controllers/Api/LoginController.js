@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import UserModel from '../../../Models/UserModel.js';
 
 export default async function LoginController(request, response) {
-
+    /** */
     const email = request.body.email;
     const password = request.body.password;
 

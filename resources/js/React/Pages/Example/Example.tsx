@@ -33,7 +33,7 @@ export default function Example() {
 
     const deleteProductHandler = () => {
         listApi();
-    }
+    }/** */
 
     const PageContent: React.JSX.Element =
         page === "Counter" ? (
